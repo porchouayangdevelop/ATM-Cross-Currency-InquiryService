@@ -21,41 +21,49 @@ using System.Web.Services.Protocols;
 public class Service1 : System.Web.Services.WebService
 {
 
-    private static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+  private static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
-    [WebMethod]
-    public string ExchangeRate()
-    {
-        IExchangeRate exchange = Factory.GetInstanceECHR();
-        return exchange.ExchangeRate();
-    }
-
-
-    [WebMethod]
-    public string Interest_Rate()
-    {
-        IInterestRate interest = Factory.GetInstanceINTR();
-        return interest.Interest_Rate();
-    }
+  [WebMethod]
+  public string ExchangeRate()
+  {
+    IExchangeRate exchange = Factory.GetInstanceECHR();
+    return exchange.ExchangeRate();
+  }
 
 
-    [WebMethod]
-    public String QueryAccName(String ATMID, String AccNum)
-    {
-        QueryAccName q = Factory.GetInstance();
-        return q.QueryAccName(ATMID.Trim()?.ToUpper()?.ToString(), AccNum.Trim()?.ToString());
-    }
+  [WebMethod]
+  public string Interest_Rate()
+  {
+    IInterestRate interest = Factory.GetInstanceINTR();
+    return interest.Interest_Rate();
+  }
 
 
-    [WebMethod]
-    public String DepositAccName(String Deposit_ccy, String AccNum)
-    {
-        IDeposit deposit = Factory.DepositAccName();
+  [WebMethod]
+  public String QueryAccName(String ATMID, String AccNum)
+  {
+    QueryAccName q = Factory.GetInstance();
+    return q.QueryAccName(ATMID.Trim()?.ToUpper()?.ToString(), AccNum.Trim()?.ToString());
+  }
 
-        logger.Info($"Request {Deposit_ccy}, {AccNum}");
-        string result = deposit.ProcessDeposit(Deposit_ccy, AccNum);
-        logger.Info(result);
-        return result;
-    }
+
+  //[WebMethod]
+  //public String DepositAccName(String ATMID, String AccNum)
+  //{
+  //  IDeposit deposit = Factory.DepositAccName();
+
+  //  string result = deposit.ProcessDeposit(ATMID, AccNum);
+  //  logger.Info(result);
+  //  return result;
+  //}
+
+
+  //[WebMethod]
+  //public String TransferInquriy(String ATMID, String AccNum)
+  //{
+  //  ITransfer transfer = Factory.GetTransferInstance();
+  //  return transfer.InQuiryTransfer(ATMID, AccNum);
+
+  //}
 
 }

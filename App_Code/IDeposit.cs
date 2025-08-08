@@ -9,5 +9,5 @@ using System.Web;
 /// </summary>
 public interface IDeposit
 {
-    string ProcessDeposit(string Deposit_ccy, string AccNum);
+    string ProcessDeposit(string ATMID, string AccNum);
 }
