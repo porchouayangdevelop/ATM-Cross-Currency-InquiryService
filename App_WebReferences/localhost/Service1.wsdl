@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://www.apb.com.la" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.apb.com.la" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.apb.com.la">
+      <s:element name="ExchangeRate">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExchangeRateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExchangeRateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Interest_Rate">
+        <s:complexType />
+      </s:element>
+      <s:element name="Interest_RateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Interest_RateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryAccName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ATMID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryAccNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryAccNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SEND_SMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SEND_SMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SEND_SMSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ExchangeRateSoapIn">
+    <wsdl:part name="parameters" element="tns:ExchangeRate" />
+  </wsdl:message>
+  <wsdl:message name="ExchangeRateSoapOut">
+    <wsdl:part name="parameters" element="tns:ExchangeRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Interest_RateSoapIn">
+    <wsdl:part name="parameters" element="tns:Interest_Rate" />
+  </wsdl:message>
+  <wsdl:message name="Interest_RateSoapOut">
+    <wsdl:part name="parameters" element="tns:Interest_RateResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryAccNameSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryAccName" />
+  </wsdl:message>
+  <wsdl:message name="QueryAccNameSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryAccNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="SEND_SMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SEND_SMS" />
+  </wsdl:message>
+  <wsdl:message name="SEND_SMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SEND_SMSResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SMS4ATM_UATSoap">
+    <wsdl:operation name="ExchangeRate">
+      <wsdl:input message="tns:ExchangeRateSoapIn" />
+      <wsdl:output message="tns:ExchangeRateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Interest_Rate">
+      <wsdl:input message="tns:Interest_RateSoapIn" />
+      <wsdl:output message="tns:Interest_RateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryAccName">
+      <wsdl:input message="tns:QueryAccNameSoapIn" />
+      <wsdl:output message="tns:QueryAccNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SEND_SMS">
+      <wsdl:input message="tns:SEND_SMSSoapIn" />
+      <wsdl:output message="tns:SEND_SMSSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SMS4ATM_UATSoap" type="tns:SMS4ATM_UATSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ExchangeRate">
+      <soap:operation soapAction="http://www.apb.com.la/ExchangeRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Interest_Rate">
+      <soap:operation soapAction="http://www.apb.com.la/Interest_Rate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAccName">
+      <soap:operation soapAction="http://www.apb.com.la/QueryAccName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SEND_SMS">
+      <soap:operation soapAction="http://www.apb.com.la/SEND_SMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMS4ATM_UATSoap12" type="tns:SMS4ATM_UATSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ExchangeRate">
+      <soap12:operation soapAction="http://www.apb.com.la/ExchangeRate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Interest_Rate">
+      <soap12:operation soapAction="http://www.apb.com.la/Interest_Rate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAccName">
+      <soap12:operation soapAction="http://www.apb.com.la/QueryAccName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SEND_SMS">
+      <soap12:operation soapAction="http://www.apb.com.la/SEND_SMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMS4ATM_UAT">
+    <wsdl:port name="SMS4ATM_UATSoap" binding="tns:SMS4ATM_UATSoap">
+      <soap:address location="http://localhost:2024/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SMS4ATM_UATSoap12" binding="tns:SMS4ATM_UATSoap12">
+      <soap12:address location="http://localhost:2024/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
